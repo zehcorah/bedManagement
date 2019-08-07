@@ -1,0 +1,26 @@
+﻿@*Author: Ryan French Date Complete: 2019/08/06
+  Purpose: Index view for the web application
+  this view displays all of the incoming patients with some simple info on them
+*@
+@model IEnumerable<beds.Models.Patients>
+
+@{
+    ViewBag.Title = "Patient List";
+}
+
+<div class="card-deck">
+    @foreach (var patient in Model)
+    {
+        <div class="card m-3">
+            <div class="card-header">
+                <h6>@patient.Sex  ,@patient.Age, @patient.Location</h6>
+            </div>
+            <img class="card-img-top" src="~/images/noimage.jpg" />
+            <div class="card-footer text-secondary-center">
+
+                <a asp-controller="home" asp-action="details" asp-route-id="@patient.ID"
+                   class="btn btn-primary">View</a>
+            </div>
+        </div>
+    }
+</div>
